@@ -54,8 +54,11 @@ def test_cleanup():
 
 def test_multiple_model_versions_registration():
     # Download resnet-18 model
-    cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
-    subprocess.run(cmd)
+    MODEL_SFILE_NAME='resnet18-5c106cde.pth'
+    response = requests.get('https://download.pytorch.org/models/'+MODEL_SFILE_NAME, allow_redirects=True)
+    open(MODEL_SFILE_NAME,'wb').write(response.content)
+    #cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
+    #subprocess.run(cmd)
     cmd2 = ["mv", "resnet18-5c106cde.pth", MODEL_STORE]
     subprocess.run(cmd2)
     # Use model archiver to create version 1.0 of resnet-18
@@ -128,8 +131,11 @@ def test_duplicate_model_registration_using_http_url_followed_by_local_url():
         'http://127.0.0.1:8081/models?url=https://torchserve.s3.amazonaws.com/mar_files/resnet-18.mar')
     time.sleep(15)
     # Download resnet-18 model serialized file
-    cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
-    subprocess.run(cmd)
+    MODEL_SFILE_NAME='resnet18-5c106cde.pth'
+    response = requests.get('https://download.pytorch.org/models/'+MODEL_SFILE_NAME, allow_redirects=True)
+    open(MODEL_SFILE_NAME,'wb').write(response.content)
+    #cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
+    #subprocess.run(cmd)
     cmd2 = ["mv", "resnet18-5c106cde.pth", MODEL_STORE]
     subprocess.run(cmd2)
     v1_cmd = "torch-model-archiver --model-name resnet-18 --version 1.0 --model-file " \
@@ -164,8 +170,11 @@ def test_duplicate_model_registration_using_http_url_followed_by_local_url():
 def run_model_archiver_to_regenerate_model_mar(force_flag=None):
     delete_model_store()
     # Download resnet-18 model serialized file
-    cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
-    subprocess.run(cmd)
+    MODEL_SFILE_NAME='resnet18-5c106cde.pth'
+    response = requests.get('https://download.pytorch.org/models/'+MODEL_SFILE_NAME, allow_redirects=True)
+    open(MODEL_SFILE_NAME,'wb').write(response.content)
+    #cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
+    #subprocess.run(cmd)
     cmd2 = ["mv", "resnet18-5c106cde.pth", MODEL_STORE]
     subprocess.run(cmd2)
     v1_cmd = "torch-model-archiver --model-name resnet-18 --version 1.0 --model-file " \
@@ -205,8 +214,11 @@ def test_model_archiver_to_regenerate_model_mar_with_force():
 
 def test_model_archiver_without_handler_flag():
     delete_model_store()
-    cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
-    subprocess.run(cmd)
+    MODEL_SFILE_NAME='resnet18-5c106cde.pth'
+    response = requests.get('https://download.pytorch.org/models/'+MODEL_SFILE_NAME, allow_redirects=True)
+    open(MODEL_SFILE_NAME,'wb').write(response.content)
+    #cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
+    #subprocess.run(cmd)
     cmd2 = ["mv", "resnet18-5c106cde.pth", MODEL_STORE]
     subprocess.run(cmd2)
     v1_cmd = "torch-model-archiver --model-name resnet-18 --version 1.0 --model-file " \
@@ -224,8 +236,11 @@ def test_model_archiver_without_handler_flag():
 
 def test_model_archiver_without_model_name_flag():
     delete_model_store()
-    cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
-    subprocess.run(cmd)
+    MODEL_SFILE_NAME='resnet18-5c106cde.pth'
+    response = requests.get('https://download.pytorch.org/models/'+MODEL_SFILE_NAME, allow_redirects=True)
+    open(MODEL_SFILE_NAME,'wb').write(response.content)
+    #cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
+    #subprocess.run(cmd)
     cmd2 = ["mv", "resnet18-5c106cde.pth", MODEL_STORE]
     subprocess.run(cmd2)
     v1_cmd = "torch-model-archiver --version 1.0 --model-file " \
@@ -243,8 +258,11 @@ def test_model_archiver_without_model_name_flag():
 
 def test_model_archiver_without_model_file_flag():
     delete_model_store()
-    cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
-    subprocess.run(cmd)
+    MODEL_SFILE_NAME='resnet18-5c106cde.pth'
+    response = requests.get('https://download.pytorch.org/models/'+MODEL_SFILE_NAME, allow_redirects=True)
+    open(MODEL_SFILE_NAME,'wb').write(response.content)
+    #cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
+    #subprocess.run(cmd)
     cmd2 = ["mv", "resnet18-5c106cde.pth", MODEL_STORE]
     subprocess.run(cmd2)
     v1_cmd = "torch-model-archiver --model-name resnet-18 --version 1.0 --serialized-file "\
@@ -260,8 +278,11 @@ def test_model_archiver_without_model_file_flag():
 
 def test_model_archiver_without_serialized_flag():
     delete_model_store()
-    cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
-    subprocess.run(cmd)
+    MODEL_SFILE_NAME='resnet18-5c106cde.pth'
+    response = requests.get('https://download.pytorch.org/models/'+MODEL_SFILE_NAME, allow_redirects=True)
+    open(MODEL_SFILE_NAME,'wb').write(response.content)
+    #cmd = ["wget", "https://download.pytorch.org/models/resnet18-5c106cde.pth"]
+    #subprocess.run(cmd)
     cmd2 = ["mv", "resnet18-5c106cde.pth", MODEL_STORE]
     subprocess.run(cmd2)
     v1_cmd = "torch-model-archiver --model-name resnet-18 --version 1.0 --model-file " \
